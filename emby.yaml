@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+  emby:
+    image: ghcr.io/linuxserver/emby
+    container_name: emby
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Singapore
+    volumes:
+      - /var/lib/docker/containers/emby/library:/config
+      - /var/lib/docker/containers/emby/tvshows:/data/tvshows
+      - /var/lib/docker/containers/emby/movies:/data/movies
+      - /var/lib/docker/containers/emby/opt/vc/lib:/opt/vc/lib #optional
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+    restart: unless-stopped
