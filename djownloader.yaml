@@ -1,0 +1,9 @@
+version: 2
+services:
+  jdownloader-2:
+    image: jlesage/jdownloader-2
+    ports:
+      - 5800:5800
+    volumes:
+      - /var/lib/docker/containers/Config/JDownloader-2:/config:rw
+      - /var/lib/docker/containers/YouTube:/output:rw
