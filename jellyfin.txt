@@ -1,0 +1,9 @@
+docker run -d \
+ --name jellyfin \
+ --user uid:gid \
+ --net=host \
+ --volume /path/to/config:/config \
+ --volume /path/to/cache:/cache \
+ --mount type=bind,source=/path/to/media,target=/media \
+ --restart=unless-stopped \
+ jellyfin/jellyfin
