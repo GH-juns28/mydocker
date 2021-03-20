@@ -1,9 +1,15 @@
-docker run -d \
- --name jellyfin \
- --user uid:gid \
- --net=host \
- --volume /path/to/config:/config \
- --volume /path/to/cache:/cache \
- --mount type=bind,source=/path/to/media,target=/media \
- --restart=unless-stopped \
- jellyfin/jellyfin
+version: "3.5"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: uid:gid
+    network_mode: "host"
+    volumes:
+      - /var/lib/docker/containers/config:/config
+      - /var/lib/docker/containers/cache:/cache
+      - /var/lib/docker/containers/media:/media
+      - /var/lib/docker/containers/media2:/media2:ro
+    restart: "unless-stopped"
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://https://nujxvserver.fun/
