@@ -9,12 +9,12 @@ services:
       - PGID=0
       - TZ=Singapore
     volumes:
-      - /var/lib/docker/containers/library:/config
-      - /var/lib/docker/containers/tvseries:/data/tvshows
-      - /var/lib/docker/containers/movies:/data/movies
-      - /var/lib/docker/containers/opt/vc/lib:/opt/vc/lib #optional
+      - ./containers/library:/config
+      - ./containers/tvseries:/data/tvshows
+      - ./containers/movies:/data/movies
+      - ./containers/opt/vc/lib:/opt/vc/lib #optional
     ports:
-      - 8097:8096
+      - 8096:8096
       - 8920:8920 #optional
       - 7359:7359/udp #optional
       - 1900:1900/udp #optional
