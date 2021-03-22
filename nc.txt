@@ -25,7 +25,7 @@ services:
     depends_on:
       - db
     volumes:
-      - nextcloud:/var/www/html
+      - ./containers/nextcloud:/var/www/html
       - ./containers/nextcloud/app/config:/var/www/html/config
       - ./containers/nextcloud/app/custom_apps:/var/www/html/custom_apps
       - ./containers/nextcloud/app/data:/var/www/html/data
