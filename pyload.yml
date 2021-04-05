@@ -9,8 +9,8 @@ services:
       - PGID=0
       - TZ=singapore
     volumes:
-      - ./containers/pyload/config:/config
-      - ./containers/pyload/downloads:/downloads
+      - /root/containers/pyload/config:/config
+      - /root/containers/pyload/downloads:/downloads
     ports:
       - 8000:8000
       - 7227:7227 #optional
