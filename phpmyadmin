@@ -1,0 +1,23 @@
+---
+version: "2.1"
+services:
+  mariadb:
+    image: linuxserver/mariadb
+    container_name: mariadb
+    environment:
+      - PUID=0
+      - PGID=0
+      - MYSQL_ROOT_PASSWORD=junicks28
+      - TZ=Singapore
+      - MYSQL_DATABASE=mysql #optional
+      - MYSQL_USER=root #optional
+      - MYSQL_PASSWORD=junicks28 #optional
+    volumes:
+      - $home/containers/MariaDB/config:/config
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    
+    docker pull ebspace/armhf-phpmyadmin
+    
+    docker run --name myadmin -d --link mysql_db_server:db -p 8080:80 -v $home/containers/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php ebspace/armhf-phpmyadmin
