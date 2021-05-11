@@ -1,0 +1,39 @@
+sudo apt update && upgrade
+apt install mariadb-server
+mysql_secure_installation
+
+//allow remote access
+sudo netstat -anp | grep 3306
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+bind-address            = 0.0.0.0
+sudo systemctl restart mariadb.service
+
+
+usefull commands:
+mysql -u root -h server-name-here -p mysql
+SELECT User,Host FROM mysql.user;
+DROP USER 'jeunill'@'192.53.115.154';
+CREATE USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'junicks28';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'junicks28';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'junicks28';
+
+
+//run in docker
+
+version: '3.1'
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: 192.53.115.154
+      PMA_USER: root
+      PMA_PASSWORD: junicks28
+    ports:
+      - "8080:80"
+//
+
+
+
+
