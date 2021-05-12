@@ -1,4 +1,4 @@
-sudo apt update && upgrade
+sudo apt update && apt upgrade -y
 apt install mariadb-server
 mysql_secure_installation
 
