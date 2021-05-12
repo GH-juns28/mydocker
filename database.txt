@@ -13,10 +13,11 @@ usefull commands:
 mysql -u root -h server-name-here -p mysql
 SELECT User,Host FROM mysql.user;
 DROP USER 'jeunill'@'192.53.115.154';
-CREATE USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'junicks28';
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'junicks28';
+CREATE USER 'root'@'%' IDENTIFIED WITH caching_sha2_password BY 'junicks28';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' IDENTIFIED BY 'junicks28';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'junicks28';
+FLUSH PRIVILEGES; 
 
 
 //run in docker
