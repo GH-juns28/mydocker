@@ -85,5 +85,6 @@ systemctl status autossh
 systemctl stop autossh
 systemctl restart autossh
 
-
+// copy to other machine
+scp newdatabase.sql root@192.53.115.154:/root
 
