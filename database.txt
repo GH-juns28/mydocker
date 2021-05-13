@@ -43,10 +43,13 @@ MASTER_HOST = '192.53.115.154',
 MASTER_USER = 'replication', 
 MASTER_PASSWORD = 'junicks28', 
 MASTER_PORT = 6000, 
-MASTER_LOG_FILE = 'mysql-bin.000007', 
-MASTER_LOG_POS = 342;
+MASTER_LOG_FILE = 'mysql-bin.000008', 
+MASTER_LOG_POS = 475;
 
 start slave;
+
+SHOW SLAVE STATUS \G
+SHOW MASTER STATUS;
 
 sudo netstat -plant  | grep 52698
 sudo kill -9 xxxx
@@ -56,4 +59,31 @@ ClientAliveInterval 5
 ClientAliveCountMax 1
 
 systemctl restart sshd
+
+
+/etc/systemd/system/autossh.service
+
+
+[Unit]
+Description=autossh
+#After=network.target
+#StartLimitIntervalSec=0
+
+[Service]
+Restart=always
+RestartSec=5
+ExecStart=/home/pi/tunnel.sh
+
+[Install]
+WantedBy=multi-user.target
+
+chmod +x autossh.service
+systemctl daemon-reload
+systemctl start autossh
+systemctl enable autossh
+systemctl status autossh
+systemctl stop autossh
+systemctl restart autossh
+
+
 
