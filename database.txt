@@ -88,3 +88,10 @@ systemctl restart autossh
 // copy to other machine
 scp newdatabase.sql root@192.53.115.154:/root
 
+//
+nano /etc/ssh/sshd_config
+systemctl restart sshd
+
+//
+sudo blkid
+mount /dev/sda1 /media/mountDrive
