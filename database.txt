@@ -63,6 +63,10 @@ ClientAliveCountMax 1
 systemctl restart sshd
 
 
+#!/bin/bash
+ssh -N -3333:192.168.1.11:22 juns@13.229.63.222
+
+
 /etc/systemd/system/autossh.service
 
 
